@@ -1,43 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, ScrollView } from 'react-native';
 
 export default function App() {
 
-  const [name, setName] = useState("Gwang");
-  const [age, setAge] = useState(0);
-  const [person,setPerson] = useState({name: 'maria', age: 40});
-
-  const ClickHandler = () => {
-    setName("Seong");
-    setPerson({name:'ilac', age:29});
-  }
+  const [people, setPeople ] = useState([
+    {name: "susan", key:'1' },
+    {name: "yoshi", key:'2' },
+    {name: "mario", key:'3' },
+    {name: "luigi", key:'4' },
+    {name: "peach", key:'5' },
+    {name: "toad", key:'6' },
+    {name: "bowser", key:'7' },
+  ])
   return (
     <View style={styles.container}>
-        <Text>my name is : {name}</Text>
-        <Text>my age is : {age}</Text>
-        <Text>his name : {person.name}</Text>
-        <Text>his age : {person.age}</Text>
-        <View style={styles.buttonContainer}>
-          <Text>Name Input</Text>
-          <TextInput 
-            multiline
-            style={styles.Inputs}
-            placeholder='John'
-            onChangeText={ (val) => setName(val)}
-          />
-          <Text>Age Input</Text>
-          <TextInput 
-            keyboardType="numeric"
-            style={styles.Inputs}
-            placeholder='0'
-            onChangeText={ (val) => setAge(val)}
-          />
-          <Button 
-            title='update' 
-            onPress = {ClickHandler}
-          ></Button>
-        </View>
+      <ScrollView>
+        {people.map( (index) => (
+            <View key={index.key}>
+                <Text style={styles.item}>{index.name}</Text>
+            </View>
+          ))}
+      </ScrollView>
     </View>
   );
 }
@@ -49,13 +33,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  buttonContainer: {
-    marginTop: 20
-  },
-  Inputs : {
-    borderWidth : 1,
-    borderColor : '#777',
-    padding: 8,
-    margin : 10
+  item:{
+    marginTop : 24,
+    padding : 30,
+    backgroundColor : 'pink',
+    fontSize : 24
   }
 });
