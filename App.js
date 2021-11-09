@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useRef } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Alert  } from 'react-native';
 import FlatListComponents from './Components/FlatListComponents';
 import ScrollViewComponent from './Components/ScrollViewComponent';
 
@@ -23,23 +23,38 @@ export default function App() {
   ]);
   
   const SubmitHandler = (text) => {
-    nextId.current = parseInt(nextId.current)+1;
-    
-    /*
-    setTodos( (prevTodos)=> {
-      return [
-        ...prevTodos,
-        {todo: text, key : nextId.current.toString() }
-        
-      ];
-    })
-    */
-    
-    const newtodo = {
-      todo: text,
-      key : nextId.current.toString()
-    };
-    setTodos([...todos, newtodo]);
+    console.log(text);
+    if(text.length > 3){
+      nextId.current = parseInt(nextId.current)+1;
+      /*
+      setTodos( (prevTodos)=> {
+        return [
+          ...prevTodos,
+          {todo: text, key : nextId.current.toString() }
+          
+        ];
+      })
+      */
+      
+      const newtodo = {
+        todo: text,
+        key : nextId.current.toString()
+      };
+      setTodos([...todos, newtodo]);
+    } else {
+      Alert.alert(
+        "Alert Title",
+        "My Alert Msg",
+        [
+          {
+            text: "Cancel",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel"
+          },
+          { text: "OK", onPress: () => console.log("OK Pressed") }
+        ]
+      );
+    }
     
   }
 
