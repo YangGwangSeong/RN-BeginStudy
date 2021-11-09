@@ -1,37 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput, ScrollView, FlatList } from 'react-native';
-
+import { View, StyleSheet } from 'react-native';
+import FlatListComponents from './Components/FlatListComponents';
+import ScrollViewComponent from './Components/ScrollViewComponent';
 export default function App() {
 
-  const [people, setPeople ] = useState([
-    {name: "susan", key:'1' },
-    {name: "yoshi", key:'2' },
-    {name: "mario", key:'3' },
-    {name: "luigi", key:'4' },
-    {name: "peach", key:'5' },
-    {name: "toad", key:'6' },
-    {name: "bowser", key:'7' },
-  ])
+  
   return (
     <View style={styles.container}>
-      <FlatList
-        numColumns={2}
-        keyExtractor={ (item)=> item.key}
-        data={people}
-        renderItem={ ( {item} ) => (
-          <Text style={styles.item}>{item.name}</Text>
-        )}
-      >
-      </FlatList>
-
-      {/* <ScrollView>
-        {people.map( (index) => (
-            <View key={index.key}>
-                <Text style={styles.item}>{index.name}</Text>
-            </View>
-          ))}
-      </ScrollView> */}
+      <FlatListComponents></FlatListComponents>
+      {/* <ScrollViewComponent></ScrollViewComponent> */}
     </View>
   );
 }
@@ -42,14 +20,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  item:{
-    marginTop : 24,
-    padding : 30,
-    backgroundColor : 'pink',
-    fontSize : 24,
-    marginHorizontal : 10,
-    marginTop : 24,
-    
   }
 });
