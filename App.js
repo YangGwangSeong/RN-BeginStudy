@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useRef } from 'react';
-import { View, StyleSheet, Alert  } from 'react-native';
+import { View, StyleSheet, Alert, TouchableWithoutFeedback, Keyboard  } from 'react-native';
 import FlatListComponents from './Components/FlatListComponents';
 import ScrollViewComponent from './Components/ScrollViewComponent';
 
@@ -23,7 +23,7 @@ export default function App() {
   ]);
   
   const SubmitHandler = (text) => {
-    console.log(text);
+
     if(text.length > 3){
       nextId.current = parseInt(nextId.current)+1;
       /*
@@ -55,17 +55,20 @@ export default function App() {
         ]
       );
     }
-    
   }
 
   return (
-    <View style={styles.container}>
-      <Header></Header>
-      <View style={styles.contents}>
-        <AddTodo SubmitHandler={SubmitHandler}></AddTodo>
-        <Contents todos={todos} setTodos={setTodos}></Contents>
+    <TouchableWithoutFeedback onPress= { () => {
+      Keyboard.dismiss();
+    }}>
+      <View style={styles.container}>
+        <Header></Header>
+        <View style={styles.contents}>
+          <AddTodo SubmitHandler={SubmitHandler}></AddTodo>
+          <Contents todos={todos} setTodos={setTodos}></Contents>
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 }
 
