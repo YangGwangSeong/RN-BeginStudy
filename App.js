@@ -4,10 +4,14 @@ import { View, StyleSheet, Alert, TouchableWithoutFeedback, Keyboard  } from 're
 import FlatListComponents from './Components/FlatListComponents';
 import ScrollViewComponent from './Components/ScrollViewComponent';
 
-
+/* 투두앱 실습 */
 import Header from './Components/Header';
 import Contents from './Components/Contents';
 import AddTodo from './Components/AddTodo';
+
+/* 플랙스 박스 */
+//import Sandbox from './Components/Sandbox';
+
 export default function App() {
 
   const nextId = useRef('7');
@@ -58,8 +62,9 @@ export default function App() {
   }
 
   return (
+    // <Sandbox></Sandbox>
     <TouchableWithoutFeedback onPress= { () => {
-      Keyboard.dismiss();
+      //Keyboard.dismiss();
     }}>
       <View style={styles.container}>
         <Header></Header>
@@ -69,15 +74,17 @@ export default function App() {
         </View>
       </View>
     </TouchableWithoutFeedback>
+
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#ffff',
   },
   contents : {
     padding: 40,
+    flex: 1,
   }
 });
