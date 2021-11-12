@@ -27,8 +27,9 @@ export default function Contents({setTodos, todos}) {
 
 const styles = StyleSheet.create({
     Item_Wrap:{
+        flex : 1,
         marginTop : 20,
-        flex: 1,
+        
     }
 });
 

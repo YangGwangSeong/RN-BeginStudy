@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useRef } from 'react';
-import { View, StyleSheet, Alert, TouchableWithoutFeedback, Keyboard  } from 'react-native';
+import { SafeAreaView, View, StyleSheet, Alert, TouchableWithoutFeedback, Keyboard  } from 'react-native';
 import FlatListComponents from './Components/FlatListComponents';
 import ScrollViewComponent from './Components/ScrollViewComponent';
 
@@ -64,15 +64,15 @@ export default function App() {
   return (
     // <Sandbox></Sandbox>
     <TouchableWithoutFeedback onPress= { () => {
-      //Keyboard.dismiss();
+      Keyboard.dismiss();
     }}>
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <Header></Header>
         <View style={styles.contents}>
           <AddTodo SubmitHandler={SubmitHandler}></AddTodo>
           <Contents todos={todos} setTodos={setTodos}></Contents>
         </View>
-      </View>
+      </SafeAreaView>
     </TouchableWithoutFeedback>
 
   );
